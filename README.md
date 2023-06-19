@@ -15,7 +15,7 @@ Follow these steps to set up the project locally:
 1. Clone the repository:
 
     ```bash
-     git clone https://github.com/trahvex/url_shortener
+     git clone https://github.com/trahvex/URL_shortener
     ```
 
 2. Navigate to the project directory:
