@@ -15,19 +15,19 @@ Follow these steps to set up the project locally:
 1. Clone the repository:
 
     ```bash
-    $ git clone https://github.com/trahvex/url_shortenergit
+     git clone https://github.com/trahvex/url_shortener
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    $ cd url_shortener
+     cd url_shortener
     ```
 
 3. Install the dependencies using Composer:
 
     ```bash
-    $ composer install
+     composer install
     ```
 
 ### Configuration
@@ -45,7 +45,7 @@ Follow these steps to set up the project locally:
 3. Run the database migrations to set up the required tables:
 
     ```bash
-    $ php bin/console doctrine:migrations:migrate
+     php bin/console doctrine:migrations:migrate
     ```
 
 ### Run the Application
@@ -53,7 +53,7 @@ Follow these steps to set up the project locally:
 You can now start the local development server to run the application:
 
 ```bash
-$ symfony server:start
+ symfony server:start
 ```
 
 Open your browser and visit http://localhost:8000 to access the application.
