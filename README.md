@@ -15,13 +15,13 @@ Follow these steps to set up the project locally:
 1. Clone the repository:
 
     ```bash
-     git clone https://github.com/trahvex/url_shortener
+     git clone https://github.com/trahvex/URL-shortener
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-     cd url_shortener
+     cd URL-shortener
     ```
 
 3. Install the dependencies using Composer:
