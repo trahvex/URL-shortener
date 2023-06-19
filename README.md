@@ -21,7 +21,7 @@ Follow these steps to set up the project locally:
 2. Navigate to the project directory:
 
     ```bash
-     cd url_shortener
+     cd URL-shortener
     ```
 
 3. Install the dependencies using Composer:
