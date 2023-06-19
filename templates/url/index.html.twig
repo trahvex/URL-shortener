@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}URL Shortener{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>URL Shortener</h1>
+    
+    {% if app.user %}
+        <h2>Bienvenido, {{ app.user.username }}</h2>
+        
+        <h3>Acortar URL</h3>
+        {{ form_start(form) }}
+        {{ form_row(form.originalUrl) }}
+        {{ form_row(form.customAlias) }} 
+        {{ form_end(form) }}
+        {% if message is not null %}
+            <div class="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        
+        <h3>URLs Acortadas</h3>
+        {% if urls|length > 0 %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Alias</th>
+                        <th>Código</th>
+                        <th>Visitas</th>
+                        <th>URL Original</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for url in urls %}
+                        <tr>
+                            <td>{{ url.customAlias }}</td>
+                            <td><a href="{{ url.shortUrlCode }}">{{ url.shortUrlCode }}</a></td>
+                            <td>{{ url.analytics.accessCount }}</td>
+                            <td>{{ url.originalUrl }}</td>
+                            <td>
+                                <form action="{{ path('delete_url', {'id': url.id}) }}" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" onclick="return confirm('¿Estás seguro de que quieres borrar esta URL?')">Borrar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No hay URLs acortadas.</p>
+        {% endif %}
+        
+        <p>¿Deseas iniciar sesión con otra cuenta?</p>
+        <a href="{{ path('logout') }}">Cerrar sesión</a>
+    {% else %}
+        <p>Regístrate para acortar URLs y ver tus URLs acortadas.</p>
+        <a href="{{ path('register') }}">Regístrate</a>
+        <p>¿Ya tienes una cuenta?</p>
+        <a href="{{ path('login') }}">Iniciar sesión</a>
+    {% endif %}
+{% endblock %}
